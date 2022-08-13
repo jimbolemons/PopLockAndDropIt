@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
 
 	public CharacterController2D controller;
 	public Animator animator;
+	[SerializeField]
+	protected Rigidbody2D rb = null;
 
 	public Joystick joystick;
 
@@ -16,8 +18,13 @@ public class PlayerMovement : MonoBehaviour
 	bool jump = false;
 	bool crouch = false;
 
-	// Update is called once per frame
-	void Update()
+    private void Start()
+    {
+		rb = GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update()
 	{
 
 		horizontalMove = joystick.Horizontal * runSpeed;
@@ -36,13 +43,21 @@ public class PlayerMovement : MonoBehaviour
 
 		float verticalMove = joystick.Vertical;
 
-		animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+		//animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-		if (verticalMove >= .5f)
+		if (controller.m_Grounded == true && verticalMove >= .5f && jump == false)
 		{
 			jump = true;
-			animator.SetBool("IsJumping", true);
+
+			StartCoroutine(Jump());
+
+			//animator.SetBool("IsJumping", true);
 		}
+
+		if (controller.m_Grounded == true)
+        {
+			jump = false;
+        }
 
 		if (verticalMove <= -.5f)
 		{
@@ -55,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
 	}
 
-	public void OnLanding()
+	/*public void OnLanding()
 	{
 		animator.SetBool("IsJumping", false);
 	}
@@ -63,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
 	public void OnCrouching(bool isCrouching)
 	{
 		animator.SetBool("IsCrouching", isCrouching);
-	}
+	}*/
 
 	void FixedUpdate()
 	{
@@ -71,4 +86,11 @@ public class PlayerMovement : MonoBehaviour
 		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
 		jump = false;
 	}
+
+	IEnumerator Jump()
+    {
+		float jumpForce = 10f;
+		rb.AddForce(new Vector2(0f, jumpForce));
+		yield return null;
+    }
 }
