@@ -12,8 +12,8 @@ TagManager:
   - Water
   - UI
   - ground
-  - 
-  - 
+  - Racket
+  - player
   - 
   - 
   - 
@@ -43,4 +43,10 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 154048829
+    locked: 0
+  - name: Racket
+    uniqueID: 4230800381
+    locked: 0
+  - name: player
+    uniqueID: 930587331
     locked: 0
