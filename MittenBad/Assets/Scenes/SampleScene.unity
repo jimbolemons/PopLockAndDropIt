@@ -671,7 +671,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797328814}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.2249, y: 29.026, z: 0.5977962}
+  m_LocalPosition: {x: -2.2249, y: 15.9, z: 0.5977962}
   m_LocalScale: {x: 10.102321, y: 0.16486424, z: 1.8708}
   m_Children: []
   m_Father: {fileID: 1511286263}
@@ -941,6 +941,7 @@ GameObject:
   - component: {fileID: 1592719794}
   - component: {fileID: 1592719799}
   - component: {fileID: 1592719793}
+  - component: {fileID: 1592719800}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -961,10 +962,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1592719794}
+  groundCheck: {fileID: 1592719800}
   animator: {fileID: 0}
   rb: {fileID: 1592719795}
   joystick: {fileID: 1620945323}
   runSpeed: 100
+  jumpHeight: 40
 --- !u!114 &1592719794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -985,6 +988,7 @@ MonoBehaviour:
     m_Bits: 64
   m_GroundCheck: {fileID: 2036048393}
   m_Grounded: 1
+  ground: {fileID: 2036048391}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1116,6 +1120,22 @@ MonoBehaviour:
   aiming: {fileID: 0}
   racket: {fileID: 5374962563408141697, guid: ebd4dea7f1e5903498d95fdb16080cbd, type: 3}
   origin: {fileID: 228189402}
+--- !u!114 &1592719800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592719792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f77335aa22ea40a6c20dba47dc12d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCheckDistance: 2
+  col: {fileID: 1592719796}
+  isGrounded: 1
+  player: {fileID: 1592719797}
 --- !u!114 &1620945323 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
@@ -1165,7 +1185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5374962563408141727, guid: ebd4dea7f1e5903498d95fdb16080cbd, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.8046876
+      value: 2.2784183
       objectReference: {fileID: 0}
     - target: {fileID: 5374962563408141727, guid: ebd4dea7f1e5903498d95fdb16080cbd, type: 3}
       propertyPath: m_LocalScale.z
@@ -1177,7 +1197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5374962563408141727, guid: ebd4dea7f1e5903498d95fdb16080cbd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.2503905
+      value: 1.68
       objectReference: {fileID: 0}
     - target: {fileID: 5374962563408141727, guid: ebd4dea7f1e5903498d95fdb16080cbd, type: 3}
       propertyPath: m_LocalPosition.z
