@@ -22,6 +22,7 @@ public class Player_Aiming : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("poop");
         // Mouse location
         Vector3 mousePosition = GetWorldPosition();
         // Calculate aiming direction
