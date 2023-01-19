@@ -17,12 +17,17 @@ public class BirdieSpawner : MonoBehaviour
    */
     public void Update()
     {
-        if (Input.GetKeyDown("k"))
+        if (Input.GetButtonDown("Button-spawn"))
         {
             Instantiate(WhatToSpawn, BirdieSpawnLocation.transform);
             Debug.Log("SpawnBirdie");
         }
     }
 
+    public void BirdieSpawn()
+    {
+        Instantiate(WhatToSpawn, BirdieSpawnLocation.transform);
+        Debug.Log("SpawnBirdie");
+    }
 
 }
